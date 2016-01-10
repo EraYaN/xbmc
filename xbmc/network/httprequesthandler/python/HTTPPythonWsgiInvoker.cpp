@@ -388,12 +388,12 @@ std::map<std::string, std::string> CHTTPPythonWsgiInvoker::createCgiEnvironment(
   return environment;
 }
 
-void CHTTPPythonWsgiInvoker::addWsgiEnvironment(HTTPPythonRequest* request, void* environ)
+void CHTTPPythonWsgiInvoker::addWsgiEnvironment(HTTPPythonRequest* request, void* _pyEnviron)
 {
-  if (environ == NULL)
+  if (_pyEnviron == NULL)
     return;
 
-  PyObject* pyEnviron = reinterpret_cast<PyObject*>(environ);
+  PyObject* pyEnviron = reinterpret_cast<PyObject*>(_pyEnviron);
 
   // WSGI-defined variables
   {

@@ -22,6 +22,7 @@
 #include <map>
 #include <string>
 
+
 #include "interfaces/python/PythonInvoker.h"
 #include "network/httprequesthandler/IHTTPRequestHandler.h"
 #include "network/httprequesthandler/python/HTTPPythonInvoker.h"
@@ -52,7 +53,7 @@ protected:
 
 private:
   static std::map<std::string, std::string> createCgiEnvironment(const HTTPPythonRequest* httpRequest, ADDON::AddonPtr addon);
-  static void addWsgiEnvironment(HTTPPythonRequest* request, void* environ);
+  static void addWsgiEnvironment(HTTPPythonRequest* request, void* pyEnviron);
 
   XBMCAddon::xbmcwsgi::WsgiResponse* m_wsgiResponse;
 };

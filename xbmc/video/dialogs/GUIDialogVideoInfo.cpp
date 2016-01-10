@@ -18,6 +18,7 @@
  *
  */
 
+#include <Iterator>
 #include "GUIDialogVideoInfo.h"
 #include "Application.h"
 #include "guilib/GUIWindow.h"
