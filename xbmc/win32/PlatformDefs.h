@@ -40,7 +40,7 @@ typedef intptr_t      ssize_t;
 #define SSIZE_MAX INTPTR_MAX
 #endif // !SSIZE_MAX
 
-#define snprintf _snprintf
+//#define snprintf _snprintf
 #define ftello64 _ftelli64
 #define fseeko64 _fseeki64
 #ifndef strcasecmp

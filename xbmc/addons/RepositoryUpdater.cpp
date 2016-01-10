@@ -35,6 +35,7 @@
 #include "utils/log.h"
 #include <algorithm>
 #include <vector>
+#include <iterator>
 
 namespace ADDON
 {

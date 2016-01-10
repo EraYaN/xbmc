@@ -332,7 +332,7 @@ int urarlib_list(char *rarfile, ArchiveList_struct **ppList, char *libpassword, 
                 pPrev->next = pCurr;
               if (!*ppList)
                 *ppList = pCurr;
-              pCurr->item.NameSize = strlen(pArc->NewLhd.FileName);
+              pCurr->item.NameSize = (unsigned short)strlen(pArc->NewLhd.FileName);
               // sanity check - if it fails the archive is likely corrupt
               if (pCurr->item.NameSize > NM)
               {

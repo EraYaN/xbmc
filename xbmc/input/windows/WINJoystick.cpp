@@ -262,7 +262,7 @@ void CJoystick::Update()
     }
 
     // get button states first, they take priority over axis
-    for (int b = 0; b < caps.dwButtons; b++)
+    for (unsigned int b = 0; b < caps.dwButtons; b++)
     {
       if (js.rgbButtons[b] & 0x80)
       {
@@ -273,7 +273,7 @@ void CJoystick::Update()
     }
 
     // get hat position
-    for (int h = 0; h < caps.dwPOVs; h++)
+    for (unsigned int h = 0; h < caps.dwPOVs; h++)
     {
       if ((LOWORD(js.rgdwPOV[h]) == 0xFFFF) != true)
       {

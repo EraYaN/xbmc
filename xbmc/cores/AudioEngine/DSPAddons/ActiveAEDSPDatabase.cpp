@@ -243,7 +243,7 @@ bool CActiveAEDSPDatabase::AddUpdateMode(CActiveAEDSPMode &mode)
         mode.AddonModeName().c_str(),
         (mode.HasSettingsDialog() ? 1 : 0),
         mode.AddonID(), mode.AddonModeNumber(), mode.ModeType());
-		bReturn = m_pDS->exec(strSQL);
+		bReturn = m_pDS->exec(strSQL)!=0; // C4800 explicit check takes the performance hit away (all be it small)
     }
     else
     { // add the items
@@ -281,7 +281,7 @@ bool CActiveAEDSPDatabase::AddUpdateMode(CActiveAEDSPMode &mode)
         mode.AddonID(),
         mode.AddonModeNumber(),
         (mode.HasSettingsDialog() ? 1 : 0));
-      bReturn = m_pDS->exec(strSQL);
+      bReturn = m_pDS->exec(strSQL) != 0; // C4800 explicit check takes the performance hit away (all be it small)
     }
   }
   catch (...)

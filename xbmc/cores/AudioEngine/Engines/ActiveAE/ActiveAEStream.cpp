@@ -101,7 +101,7 @@ void CActiveAEStream::InitRemapper()
   for(unsigned int i=0; i<m_format.m_channelLayout.Count(); i++)
   {
     avLast = avCur;
-    avCur = CAEUtil::GetAVChannel(m_format.m_channelLayout[i]);
+    avCur = (unsigned int)CAEUtil::GetAVChannel(m_format.m_channelLayout[i]);
     if(avCur < avLast)
     {
       needRemap = true;
@@ -253,7 +253,7 @@ unsigned int CActiveAEStream::AddData(uint8_t* const *data, unsigned int offset,
 
       if (!copied)
       {
-        m_currentBuffer->timestamp = pts;
+        m_currentBuffer->timestamp = (int64_t)pts;
         m_currentBuffer->pkt_start_offset = m_currentBuffer->pkt->nb_samples;
       }
 
@@ -269,11 +269,11 @@ unsigned int CActiveAEStream::AddData(uint8_t* const *data, unsigned int offset,
         if (m_format.m_dataFormat != AE_FMT_RAW)
         {
           m_currentBuffer->pkt->nb_samples += minFrames;
-          m_bufferedTime += (double)minFrames / m_currentBuffer->pkt->config.sample_rate;
+          m_bufferedTime += (float)minFrames / m_currentBuffer->pkt->config.sample_rate;
         }
         else
         {
-          m_bufferedTime += m_format.m_streamInfo.GetDuration() / 1000;
+          m_bufferedTime += (float)(m_format.m_streamInfo.GetDuration() / 1000);
           m_currentBuffer->pkt->nb_samples += minFrames;
           rawPktComplete = true;
         }

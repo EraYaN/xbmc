@@ -2324,7 +2324,7 @@ bool CGUIInfoManager::GetInt(int &value, int info, int contextWindow, const CGUI
             {
               CEpgInfoTagPtr tag(GetEpgInfoTag());
               if (tag)
-                value = tag->ProgressPercentage();
+                value = (int)tag->ProgressPercentage();
             }
             else
               value = (int)(g_application.GetPercentage());
@@ -4568,7 +4568,7 @@ std::string CGUIInfoManager::GetCurrentSeekTime(TIME_FORMAT format) const
 {
   if (format == TIME_FORMAT_GUESS && GetTotalPlayTime() >= 3600)
     format = TIME_FORMAT_HH_MM_SS;
-  return StringUtils::SecondsToTimeString(g_application.GetTime() + CSeekHandler::GetInstance().GetSeekSize(), format);
+  return StringUtils::SecondsToTimeString((long)(g_application.GetTime() + CSeekHandler::GetInstance().GetSeekSize()), format);
 }
 
 int CGUIInfoManager::GetTotalPlayTime() const
